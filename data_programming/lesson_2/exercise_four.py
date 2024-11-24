@@ -1,6 +1,5 @@
 from enum import Enum
 import inquirer
-import msvcrt 
 import string
 from random_word import RandomWords
 
@@ -23,7 +22,7 @@ class Hangman(Game):
     def __init__(self):
         players = int(self.get_game_info("Choose number of players", ['1', '2']))
         difficulty = self.get_game_info("Choose difficulty ", [level.name for level in self.DifficultyLevel])
-        self.difficulty = difficulty
+        self.attempts =  self.DifficultyLevel[difficulty].value
         super().__init__(players)
         self.is_win = False
         self.play()
@@ -50,34 +49,70 @@ class Hangman(Game):
 
     def check_win(self):
         return all(char is None for char in self.word_to_guess) 
-    def check_guess(self, guess):
+    def make_guess(self):
+        print("Attempts left:", self.attempts_left)
+        guess = input("Try to guess: ").lower()
 
-        if guess in self.word_to_guess:
-            print(f"Entered: {guess}, Result: Correct guess!")
-            first_occurence = self.word_to_guess.index(guess)
-            self.word_to_guess[first_occurence] = None
-            self.current_word_state[first_occurence] = guess
+        if not self.is_valid_guess(guess):
+            print(f"Entered: {guess}, Result: Invalid character!")
             return True
-        
 
+        if self.is_correct_full_guess(guess):
+            print(f"Entered: {guess}, Result: Correct guess!")
+            self.reveal_entire_word(guess)
+            return True
+
+        if len(guess) == 1:
+            return self.process_single_letter_guess(guess)
+        
         print(f"Entered: {guess}, Result: Incorrect guess!")
         return False
 
-    def play(self):
+    def is_valid_guess(self, guess):
+        return all(char in self.allowed_characters for char in guess)
 
+    def is_correct_full_guess(self, guess):
+        return guess == ''.join(self.word_to_guess)
+
+    def reveal_entire_word(self, guess):
+        self.word_to_guess = [None for _ in self.word_to_guess]
+        self.current_word_state = list(guess)
+
+    def process_single_letter_guess(self, letter):
+        if letter in self.word_to_guess:
+            print(f"Entered: {letter}, Result: Correct guess!")
+            first_occurrence = self.word_to_guess.index(letter)
+            self.word_to_guess[first_occurrence] = None
+            self.current_word_state[first_occurrence] = letter
+            return True
+        else:
+            print(f"Entered: {letter}, Result: Incorrect guess!")
+            self.attempts_left -= 1
+            return False
+
+
+
+
+        
+            
+        
+        
+        
+        print(f"Entered: {guess}, Result: Incorrect guess!")
+        return False
+
+
+
+
+    def play(self):
+    
         
         self.initialize_word()
-        attempts_left = self.DifficultyLevel[self.difficulty].value
+        attempts_left = self.attempts
         
         while(attempts_left>0 and not self.is_win):
-            print("Attempts left: ", attempts_left)
-            guess = input("Try to guess: ").lower()
-
-            if len(guess) !=1 or guess not in self.allowed_characters:
-                print("Invalid input - only single letters from asci are allowed")
-                continue
-
-            if self.check_guess(guess):
+           
+            if self.make_guess():
                 self.is_win = self.check_win()
             else:
                 attempts_left -= 1
@@ -88,6 +123,7 @@ class Hangman(Game):
         print("Game result: ", "Vicory" if self.is_win else "Defeat", "with ")
         
     
+
 
 h = Hangman()
 

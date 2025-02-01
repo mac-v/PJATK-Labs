@@ -4,6 +4,7 @@ This project involves analyzing historical S&P 500 data, performing data cleanin
 
 
 ## Python version
+Python 3.12.3
 
 
 ## Project Files

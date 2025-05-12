@@ -1,0 +1,46 @@
+{
+  "_id": "68174223966d272e83f3abbe",
+  "sex": "Female",
+  "first_name": "Mildred",
+  "last_name": "Burns",
+  "job": "Developer III",
+  "email": "mburns6y@scientificamerican.com",
+  "location": {
+    "city": "Mishan",
+    "address": {
+      "streetname": "Vernon",
+      "streetnumber": 419
+    }
+  },
+  "description": "metus vitae ipsum aliquam non mauris morbi non lectus aliquam sit amet diam in magna",
+  "height": 164.6,
+  "weight": 67.85,
+  "birth_date": "2008-08-05T07:50:57Z",
+  "nationality": "China",
+  "credit": [
+    {
+      "type": "jcb",
+      "number": 3589891399758957,
+      "currency": "SZL",
+      "balance": 6331.01
+    },
+    {
+      "type": "laser",
+      "number": 5387322654854132,
+      "currency": "RUB",
+      "balance": 4889.8
+    },
+    {
+      "type": "americanexpress",
+      "number": 3583445553314119,
+      "currency": "GTQ",
+      "balance": 4685.69
+    },
+    {
+      "type": "maestro",
+      "number": 4844536156574233,
+      "currency": "PHP",
+      "balance": 5094.5
+    }
+  ]
+}

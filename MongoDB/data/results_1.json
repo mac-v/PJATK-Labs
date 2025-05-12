@@ -1,0 +1,40 @@
+{
+  "_id": "68174223966d272e83f3aac9",
+  "sex": "Female",
+  "first_name": "Brenda",
+  "last_name": "Gonzalez",
+  "job": "Librarian",
+  "email": "bgonzalez5@github.com",
+  "location": {
+    "city": "Glagahan",
+    "address": {
+      "streetname": "Union",
+      "streetnumber": 88
+    }
+  },
+  "description": "ac nibh fusce lacus purus aliquet at feugiat non pretium quis",
+  "height": 174.56,
+  "weight": 68.14,
+  "birth_date": "2011-11-04T22:35:37Z",
+  "nationality": "Indonesia",
+  "credit": [
+    {
+      "type": "jcb",
+      "number": 5007660999443305,
+      "currency": "RSD",
+      "balance": 5328.58
+    },
+    {
+      "type": "switch",
+      "number": 5602246288423007,
+      "currency": "SEK",
+      "balance": 5115.83
+    },
+    {
+      "type": "jcb",
+      "number": 3555629611566737,
+      "currency": "EUR",
+      "balance": 6050.21
+    }
+  ]
+}

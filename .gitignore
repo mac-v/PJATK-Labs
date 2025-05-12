@@ -2,3 +2,6 @@
 .vscode
 images/
 venv
+
+node_modules
+.env
